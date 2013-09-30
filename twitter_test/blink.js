@@ -1,6 +1,6 @@
 var gpio = require("pi-gpio");
 
-var led = 18;
+var led = 12;
 var rate = 1000;
 var state = true;
 
