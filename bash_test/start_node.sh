@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NODE=/opt/node/bin/node
-SERVER_JS_FILE=/home/pi/app/server.js
+SERVER_JS_FILE=/home/pi/app/blink.js
 USER=pi
 OUT=/home/pi/nodejs.log
 
