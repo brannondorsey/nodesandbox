@@ -1,17 +1,38 @@
 var gpio = require("pi-gpio");
 var piblaster = require('pi-blaster.js');
 
-var cRed = getRandomInt(0, 255);
-var cGreen = getRandomInt(0, 255);
-var cBlue = getRandomInt(0, 255);
+var cRed = Math.floor(Math.random());
+var cGreen = Math.floor(Math.random());
+var cBlue = Math.floor(Math.random());
 
-var tRed = getRandomInt(0, 255);
-var tGreen = getRandomInt(0, 255);
-var tBlue = getRandomInt(0, 255);
+var tRed = Math.floor(Math.random());
+var tGreen = Math.floor(Math.random());
+var tBlue = Math.floor(Math.random());
 
 var signRed;
 var signGreen;
 var signBlue;
+
+  if (cRed > tRed) {
+    signRed = -0.05;
+  } 
+  else {
+    signRed = 0.05;
+  }
+
+  if (cGreen > tGreen) {
+    signGreen = -0.05;
+  } 
+  else {
+    signGreen = 0.05;
+  }
+
+  if (cBlue > tBlue) {
+    signBlue = -0.05;
+  } 
+  else {
+    signBlue = 0.05;
+  }
 
 var maxRed;
 var minRed;
@@ -19,6 +40,7 @@ var maxGreen;
 var minGreen;
 var maxBlue;
 var minBlue;
+var test = 0.9;
 
 setInterval(loop, 1);
 
@@ -26,56 +48,57 @@ function loop(){
     colorPick();
     
     // set R G B with current values
-    piblaster.setPwm(2, cRed);
-    piblaster.setPwm(3, cGreen);
-    piblaster.setPwm(4, cBlue);
-    console.log(cRed + "," + signRed);  
+    piblaster.setPwm(2, test);
+    piblaster.setPwm(3, test);
+    piblaster.setPwm(4, test);
+    console.log(test);
+    
 }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function mapRange(value, low1, high1, low2, high2){
+    return low2 + (high2 - low2) * ((value - low1) / (high1 - low1));
 }
 
 function colorPick(){
 
-    cRed = cRed + (1 * signRed);
-    cGreen = cGreen + (1 * signGreen);
-    cBlue = cBlue + (1 * signBlue);
+    cRed += (1 * signRed);  
+    cGreen += (1 * signGreen);
+    cBlue += (1 * signBlue);
   
     // RED
     // check to see if current = target
-    if (int(cRed) == int(tRed)) {
-        tRed = getRandomInt(0, 255);
+    if (cRed == tRed) {
+        tRed = Math.floor(Math.random());
     }
     // decide to fade up or down, depending where target is
     if (cRed < tRed) {
-        signRed = 1;
+        signRed = 0.05;
     } else {
-      signRed = -1;
+      signRed = -0.05;
     }
   
     // GREEN
     // check to see if current = target
-    if (int(cGreen) == int(tGreen)) {
-        tGreen = getRandomInt(0, 255);
+    if (cGreen == tGreen) {
+        tGreen = Math.floor(Math.random());
     }
     // decide to fade up or down, depending where target is
     if (cGreen < tGreen) {
-      signGreen = 1;
+      signGreen = 0.05;
     } else {
-      signGreen = -1;
+      signGreen = -0.05;
     }
   
     // BLUE
     // check to see if current = target
-    if (int(cBlue) == int(tBlue)) {
-        tBlue = getRandomInt(0, 255);
+    if (cBlue == tBlue) {
+        tBlue = Math.floor(Math.random());
     }
     // decide to fade up or down, depending where target is
     if (cBlue < tBlue) {
-      signBlue = 1;
+      signBlue = 0.05;
     } else {
-      signBlue = -1;
+      signBlue = -0.05;
     }
 
 }
