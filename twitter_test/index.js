@@ -13,12 +13,18 @@ var twit = new twitter({
 //     console.log(util.inspect(data,{colors: true}));
 // });
 
-twit.stream('filter', { track: track }, function(stream) {
+// twit.stream('filter', { track: track }, function(stream) {
+// 	//event
+//     stream.on('data', function(data) {
+//     	output(data);
+//     });
+// });
 
-	//event
-    stream.on('data', function(data) {
-    	output(data);
-    });
+twit.search("test", {result_type: "recent",
+					   count: 1}, function(data){
+	var tweetData = data.statuses[0];
+	console.log(util.inspect(tweetData, {colors: true}));
+	output(tweetData);
 });
 
 function output(data){
