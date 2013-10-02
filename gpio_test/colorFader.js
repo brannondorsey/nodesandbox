@@ -1,13 +1,13 @@
 var gpio = require("pi-gpio");
 var piblaster = require('pi-blaster.js');
 
-var cRed = getRandomInt(0, 255);
-var cGreen = getRandomInt(0, 255);
-var cBlue = getRandomInt(0, 255);
+var cRed = Math.random();
+var cGreen = Math.random();
+var cBlue = Math.random();
 
-var tRed = getRandomInt(0, 255);
-var tGreen = getRandomInt(0, 255);
-var tBlue = getRandomInt(0, 255);
+var tRed = Math.random();
+var tGreen = Math.random();
+var tBlue = Math.random();
 
 var signRed;
 var signGreen;
@@ -32,10 +32,6 @@ function loop(){
     console.log(cRed + "," + signRed);  
 }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 function colorPick(){
 
     cRed = cRed + (1 * signRed);
@@ -45,7 +41,7 @@ function colorPick(){
     // RED
     // check to see if current = target
     if (int(cRed) == int(tRed)) {
-        tRed = getRandomInt(0, 255);
+        tRed = Math.random();
     }
     // decide to fade up or down, depending where target is
     if (cRed < tRed) {
@@ -57,7 +53,7 @@ function colorPick(){
     // GREEN
     // check to see if current = target
     if (int(cGreen) == int(tGreen)) {
-        tGreen = getRandomInt(0, 255);
+        tGreen = Math.random();
     }
     // decide to fade up or down, depending where target is
     if (cGreen < tGreen) {
@@ -69,7 +65,7 @@ function colorPick(){
     // BLUE
     // check to see if current = target
     if (int(cBlue) == int(tBlue)) {
-        tBlue = getRandomInt(0, 255);
+        tBlue = Math.random();
     }
     // decide to fade up or down, depending where target is
     if (cBlue < tBlue) {
