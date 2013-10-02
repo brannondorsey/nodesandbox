@@ -45,9 +45,9 @@ function colorPick(){
     }
     // decide to fade up or down, depending where target is
     if (cRed < tRed) {
-        signRed = 1;
+        signRed = 0.05;
     } else {
-      signRed = -1;
+      signRed = -0.05;
     }
   
     // GREEN
@@ -57,9 +57,9 @@ function colorPick(){
     }
     // decide to fade up or down, depending where target is
     if (cGreen < tGreen) {
-      signGreen = 1;
+      signGreen = 0.05;
     } else {
-      signGreen = -1;
+      signGreen = -0.05;
     }
   
     // BLUE
@@ -69,9 +69,9 @@ function colorPick(){
     }
     // decide to fade up or down, depending where target is
     if (cBlue < tBlue) {
-      signBlue = 1;
+      signBlue = 0.05;
     } else {
-      signBlue = -1;
+      signBlue = -0.05;
     }
 
 }
