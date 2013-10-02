@@ -1,37 +1,39 @@
 var gpio = require("pi-gpio");
 var piblaster = require('pi-blaster.js');
 
-var cRed = Math.floor(Math.random());
-var cGreen = Math.floor(Math.random());
-var cBlue = Math.floor(Math.random());
+var cRed = Math.random();
+var cGreen = Math.random();
+var cBlue = Math.random();
+var changePerLoop = 0.05;
+var threshold = 0.1;
 
-var tRed = Math.floor(Math.random());
-var tGreen = Math.floor(Math.random());
-var tBlue = Math.floor(Math.random());
+var tRed = Math.random();
+var tGreen = Math.random();
+var tBlue = Math.random();
 
 var signRed;
 var signGreen;
 var signBlue;
 
   if (cRed > tRed) {
-    signRed = -0.05;
+    signRed = -changePerLoop;
   } 
   else {
-    signRed = 0.05;
+    signRed = changePerLoop;
   }
 
   if (cGreen > tGreen) {
-    signGreen = -0.05;
+    signGreen = -changePerLoop;
   } 
   else {
-    signGreen = 0.05;
+    signGreen = changePerLoop;
   }
 
   if (cBlue > tBlue) {
-    signBlue = -0.05;
+    signBlue = -changePerLoop;
   } 
   else {
-    signBlue = 0.05;
+    signBlue = changePerLoop;
   }
 
 var maxRed;
@@ -48,10 +50,15 @@ function loop(){
     colorPick();
     
     // set R G B with current values
-    piblaster.setPwm(2, test);
-    piblaster.setPwm(3, test);
-    piblaster.setPwm(4, test);
-    console.log(test);
+    piblaster.setPwm(0, cRed);
+    piblaster.setPwm(2, cGreen);
+    piblaster.setPwm(3, cBlue);
+    console.log("The value of cRed is: " + cRed);
+    console.log("The value of cGreen is: " + cGreen);
+    console.log("The value of cBlue is: " + cBlue);
+    var difference = Math.abs(cRed - tRed);
+    console.log("The difference between cRed and tRed is " + difference);
+    
     
 }
 
@@ -72,9 +79,9 @@ function colorPick(){
     }
     // decide to fade up or down, depending where target is
     if (cRed < tRed) {
-        signRed = 0.05;
+        signRed = changePerLoop;
     } else {
-      signRed = -0.05;
+      signRed = -changePerLoop;
     }
   
     // GREEN
@@ -84,9 +91,9 @@ function colorPick(){
     }
     // decide to fade up or down, depending where target is
     if (cGreen < tGreen) {
-      signGreen = 0.05;
+      signGreen = changePerLoop;
     } else {
-      signGreen = -0.05;
+      signGreen = -changePerLoop;
     }
   
     // BLUE
@@ -96,9 +103,9 @@ function colorPick(){
     }
     // decide to fade up or down, depending where target is
     if (cBlue < tBlue) {
-      signBlue = 0.05;
+      signBlue = changePerLoop;
     } else {
-      signBlue = -0.05;
+      signBlue = -changePerLoop;
     }
 
 }
