@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lamp Interface</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+		<style>
+			.slider{
+				width: 500px;
+				display: block;
+			}
+
+			#red{
+				color: rgb(255, 0, 0);
+			}
+
+			.end{
+				visibility: hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			var dormantBehavior = $(".dormant input[name='']");
+		</script>
+	</head>
+	<body>
+		<form>
+			<div class="dormant">
+				<h2>Dormant</h2>
+				<label for="static">static</label>
+				<input type="radio" id="static" name="behavior" value=""></input>
+				<label for="animation">animation</label>
+				<input type="radio" id="animation" name="behavior" value=""></input>
+
+				<input id="anim-time" type="number"></input>
+				<label for="anim-time">seconds</label>
+
+				<div class="begin" >
+					<input id="red" class="slider" type="range"></input>
+					<input id="green" class="slider" type="range"></input>
+					<input id="blue" class="slider" type="range"></input>
+				</div>
+
+				<div class="end">
+					<input id="red" class="slider" type="range"></input>
+					<input id="green" class="slider" type="range"></input>
+					<input id="blue" class="slider" type="range"></input>
+				</div>
+			</div>
+
+			<div class="active">
+				<h2>Active</h2>
+				<label for="static">static</label>
+				<input type="radio" id="static" name="behavior" value=""></input>
+				<label for="animation">animation</label>
+				<input type="radio" id="animation" name="behavior" value=""></input>
+
+				<input id="anim-time" type="number"></input>
+				<label for="anim-time">seconds</label>
+
+
+				<input id="red" class="slider" type="range"></input>
+				<input id="green" class="slider" type="range"></input>
+				<input id="blue" class="slider" type="range"></input>
+			</div>
+
+			<h2>Custom Animation</h2>
+		<form>
+	</body>
+</html>

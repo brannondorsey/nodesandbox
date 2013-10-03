@@ -59,7 +59,7 @@ function writePin(led, state){
 	var output = state ? 1 : 0;
 		gpio.open(led, "output", function(err) {  
 		    gpio.write(led, output, function() {
-		    	console.log("Wrote " + state + " to pin");     
+		    	//console.log("Wrote " + state + " to pin");     
 		        gpio.close(led)
 		    });
 		});
